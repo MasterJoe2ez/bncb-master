@@ -1,0 +1,90 @@
+<div align="center" style="vertical-align: inherit; padding: 10px;">
+  <mat-card-content class="push-bottom-none" style="margin: 10px">
+
+    <form #dataForm="ngForm">
+      <div layout="row">
+        <mat-form-field flex>
+          <input matInput
+                 #keyElement
+                 #keyControl="ngModel"
+                 placeholder="ID"
+                 [(ngModel)]="data.key"
+                 name="key"
+                 maxlength="100"
+                 required>
+
+          <mat-hint align="start">
+                <span [hidden]="keyControl.pristine" class="tc-red-600">
+                  <span [hidden]="!keyControl.hasError('required')">Required</span>
+                </span>
+          </mat-hint>
+          <mat-hint align="end">{{keyElement.value?.length || 0}} / 25</mat-hint>
+        </mat-form-field>
+
+      </div>
+
+      <div layout="row">
+        <mat-form-field flex>
+          <input matInput
+                 #telElement
+                 #telControl="ngModel"
+                 placeholder="Telephone"
+                 [(ngModel)]="data.tel"
+                 name="tel"
+                 maxlength="8"
+                 required>
+          <mat-hint align="start">
+                <span [hidden]="telControl.pristine" class="tc-red-600">
+                  <span [hidden]="!telControl.hasError('required')">Required</span>
+                </span>
+          </mat-hint>
+          <mat-hint align="end">{{telElement.value?.length || 0}} / 25</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div layout="row">
+        <mat-form-field flex>
+          <input matInput
+                 #addressElement
+                 #addressControl="ngModel"
+                 placeholder="Address"
+                 [(ngModel)]="data.address"
+                 name="address"
+                 maxlength="250"
+                 required>
+          <mat-hint align="start">
+                <span [hidden]="addressControl.pristine" class="tc-red-600">
+                  <span [hidden]="!addressControl.hasError('required')">Required</span>
+                </span>
+          </mat-hint>
+          <mat-hint align="end">{{addressElement.value?.length || 0}} / 250</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div layout="row">
+        <mat-form-field flex>
+          <input matInput
+                 #statusElement
+                 #statusControl="ngModel"
+                 placeholder="Status"
+                 [(ngModel)]="data.status"
+                 name="status"
+                 maxlength="250">
+          <mat-hint align="start">
+            <!--<span [hidden]="name2Control.pristine" class="tc-red-600">-->
+            <!--<span [hidden]="!name2Control.hasError('required')">Required</span>-->
+            <!--</span>-->
+          </mat-hint>
+          <mat-hint align="end">{{statusElement.value?.length || 0}} / 250</mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-divider style="margin: 10px"></mat-divider>
+  <mat-card-footer style="margin: 0px 10px;align-content: center;">
+    <button mat-button class="text-upper" mat-dialog-close>Cancel</button>
+    <button mat-button class="text-upper" [disabled]="!dataForm.form.valid" color="primary"
+            (click)="saveData(dataForm.form)">Save
+    </button>
+  </mat-card-footer>
+</div>
